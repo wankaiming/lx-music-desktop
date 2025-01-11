@@ -76,18 +76,7 @@ export const createWindow = () => {
    * Initial window options
    */
   const options: Electron.BrowserWindowConstructorOptions = {
-    height: windowSizeInfo.height,
-    useContentSize: true,
-    width: windowSizeInfo.width,
-    frame: false,
-    transparent: !global.envParams.cmdParams.dt,
-    hasShadow: global.envParams.cmdParams.dt,
-    // enableRemoteModule: false,
-    // icon: join(global.__static, isWin ? 'icons/256x256.ico' : 'icons/512x512.png'),
-    resizable: false,
-    maximizable: false,
-    fullscreenable: true,
-    roundedCorners: false,
+	frame: false,
     show: false,
     webPreferences: {
       session: ses,
@@ -102,10 +91,10 @@ export const createWindow = () => {
     },
   }
   if (global.envParams.cmdParams.dt) options.backgroundColor = theme.colors['--color-primary-light-1000']
-  if (global.lx.appSetting['common.startInFullscreen']) {
+  /*if (global.lx.appSetting['common.startInFullscreen']) {
     options.fullscreen = true
     if (isLinux) options.resizable = true
-  }
+  }*/
   browserWindow = new BrowserWindow(options)
 
   const winURL = process.env.NODE_ENV !== 'production' ? 'http://localhost:9080' : `file://${path.join(encodePath(__dirname), 'index.html')}`
@@ -190,14 +179,20 @@ export const toggleMinimize = () => {
   if (browserWindow.isVisible()) {
     if (browserWindow.isMinimized()) browserWindow.restore()
     else browserWindow.minimize()
-  } else browserWindow.show()
+  } else {
+	browserWindow.maximize(); 
+	browserWindow.show()
+  }
 }
 export const showWindow = () => {
   if (!browserWindow) return
   if (browserWindow.isVisible()) {
     if (browserWindow.isMinimized()) browserWindow.restore()
     else browserWindow.focus()
-  } else browserWindow.show()
+  } else {
+	browserWindow.maximize(); 
+	browserWindow.show()
+  }
 }
 export const hideWindow = () => {
   if (!browserWindow) return
