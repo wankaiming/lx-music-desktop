@@ -50,7 +50,23 @@ jobs:
           path: |
                 node_modules/
                 package-lock.json
-          retention-days: 7  # 可选，设置保留天数          
+          retention-days: 7  # 可选，设置保留天数  
+
+      - name: Build Package Setup x64
+        run: npm run pack:win:setup:x64
+      - name: Upload Artifact Setup x64
+        uses: actions/upload-artifact@v4
+        with:
+          name: lx-music-desktop-x64-Setup
+          path: build/*-x64-Setup.exe
+
+      - name: Build Package 7z x64
+        run: npm run pack:win:7z:x64
+      - name: Upload Artifact 7z x64
+        uses: actions/upload-artifact@v4
+        with:
+          name: lx-music-desktop-win_x64-green
+          path: build/*win_x64-green.7z          
 
       - name: Generate file MD5
         run: |
