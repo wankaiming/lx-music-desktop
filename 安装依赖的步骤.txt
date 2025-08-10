@@ -1,0 +1,87 @@
+# 临时使用淘宝镜像
+npm install --registry=https://registry.npmmirror.com
+
+# 永久切换淘宝镜像
+npm config set registry https://registry.npmmirror.com
+
+# 设置官方镜像
+npm config set registry https://registry.npmjs.org/
+
+# 安装依赖
+npm install --loglevel verbose
+
+
+# 安装 yarn
+npm install -g yarn
+
+# 配置淘宝镜像
+yarn config set registry https://registry.npmmirror.com
+
+# 使用 yarn 安装依赖
+yarn install --verbose
+
+# 配置网络代理
+npm config set proxy http://127.0.0.1:1080
+npm config set https-proxy http://127.0.0.1:1080
+
+npm config set proxy http://127.0.0.1:7890
+npm config set https-proxy http://127.0.0.1:7890
+
+# 剔除网络代理
+npm config delete proxy
+npm config delete https-proxy
+
+
+# 设置 Git 全局代理（需替换为你的代理地址）
+git config --global http.proxy http://127.0.0.1:1080
+git config --global https.proxy http://127.0.0.1:1080
+
+git config --global http.proxy http://127.0.0.1:7890
+git config --global https.proxy http://127.0.0.1:7890
+
+git config --global http.proxy http://127.0.0.1:1081
+git config --global https.proxy http://127.0.0.1:1081
+
+
+# 取消代理（如果不需要）
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+# 关闭ssl检查
+npm config set strict-ssl false
+
+
+# 清理缓存
+npm cache clean --force
+
+# 删除依赖文件
+rmdir K:\lx-music-desktop\node_modules /S /Q
+
+
+环境要求
+
+Node.js 16+
+
+环境准备
+
+安装 Node.js 环境 (如已安装请跳过)：下载并安装 Node.js，安装结束后，打开命令行输入 node -v，输出 Node.js 的版本号即表示已安装完成；
+安装 Visual Studio Build Tools (如已安装请跳过)：下载并安装 Visual Studio Build Tools，安装程序后勾选「使用 C++ 的桌面开发」安装即可；
+拉取代码：克隆本仓库代码；
+安装依赖：在项目根目录打开命令行，执行命令：npm install，若此命令执行的过程中报错可以尝试百度报错内容找解决方法。
+
+开发及构建
+
+# 开发模式
+npm run dev
+
+# 构建免安装版
+npm run pack:dir  npm run build
+
+# 构建安装包（Windows）
+npm run pack:win   npm run pack:win:7z:x64
+
+# 构建安装包（macOS）
+npm run pack:mac
+
+# 构建安装包（Linux）
+npm run pack:linux
