@@ -19,6 +19,7 @@ window.lx.isEditingHotKey = false
 
 export const registerKeyEvent = () => {
   keyBind.bindKey((key, eventKey, type, event, keys, isEditing) => {
+	if (key == 'escape') return;
     // console.log(`key_${key}_${type}`)
     window.app_event.keyDown({ event, keys, key, eventKey, type })
     // console.log(event, key)

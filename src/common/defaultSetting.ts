@@ -9,7 +9,7 @@ const defaultSetting: LX.AppSetting = {
 
   'common.windowSizeId': 3,
   'common.fontSize': 16,
-  'common.startInFullscreen': false,
+  'common.startInFullscreen': true,
   'common.langId': null,
   'common.apiSource': 'temp',
   'common.sourceNameType': 'alias',

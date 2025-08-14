@@ -32,6 +32,7 @@ import { clearDownKeys } from '@renderer/event'
 
 const handle_key_down = ({ event, type, key }: LX.KeyDownEevent) => {
   // console.log(key)
+  if (key == 'escape') return;
   if (key != 'escape' || !event || event.repeat || type == 'up' || window.lx.isEditingHotKey || (event.target as HTMLElement)?.classList.contains('ignore-esc') || event.lx_handled) return
   if ((event.target as HTMLElement).tagName != 'INPUT') {
     if (isFullscreen.value) {

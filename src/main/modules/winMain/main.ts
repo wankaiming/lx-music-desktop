@@ -76,9 +76,9 @@ export const createWindow = () => {
    * Initial window options
    */
   const options: Electron.BrowserWindowConstructorOptions = {
-    height: windowSizeInfo.height,
+    //height: windowSizeInfo.height,
     useContentSize: true,
-    width: windowSizeInfo.width,
+    //width: windowSizeInfo.width,
     frame: false,
     transparent: !global.envParams.cmdParams.dt,
     hasShadow: global.envParams.cmdParams.dt,
@@ -103,10 +103,15 @@ export const createWindow = () => {
   }
   if (global.envParams.cmdParams.dt) options.backgroundColor = theme.colors['--color-primary-light-1000']
   if (global.lx.appSetting['common.startInFullscreen']) {
-    options.fullscreen = true
+    //options.fullscreen = true
     if (isLinux) options.resizable = true
   }
   browserWindow = new BrowserWindow(options)
+	if (global.lx.appSetting['common.startInFullscreen']) {
+		// 默认最大化窗口显示
+		browserWindow.maximize(); 
+		browserWindow.show();
+	}
 
   const winURL = process.env.NODE_ENV !== 'production' ? 'http://localhost:9080' : `file://${path.join(encodePath(__dirname), 'index.html')}`
   void browserWindow.loadURL(winURL + `?os=${getPlatform()}&dt=${global.envParams.cmdParams.dt}&dark=${shouldUseDarkColors}&theme=${encodeURIComponent(JSON.stringify(theme))}`)
