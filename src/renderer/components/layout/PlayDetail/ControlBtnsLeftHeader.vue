@@ -81,7 +81,7 @@ const fullscreenExit = () => {
         display: none;
       }
       .fullscreenExit {
-        display: flex;
+        display: none;
       }
     }
   }
